@@ -21,32 +21,6 @@ export default function tistoryPreviewer(): AstroIntegration {
 
         // 개발 서버에서만 미들웨어와 가상 라우트 추가
         if (command === "dev") {
-          if (existsSync(skinEntry)) {
-            const skinContent = readFileSync(skinEntry, "utf-8");
-
-            if (!skinContent.includes("export const prerender = false")) {
-              const lines = skinContent.split("\n");
-              const frontmatterEndIndex = lines.findIndex((line, idx) => {
-                return idx > 0 && line.trim() === "---";
-              });
-
-              if (frontmatterEndIndex > 0) {
-                lines.splice(frontmatterEndIndex, 0, "export const prerender = false;");
-              } else {
-                lines.unshift("---");
-                lines.push("export const prerender = false;");
-                lines.push("---");
-              }
-
-              const modifiedContent = lines.join("\n");
-              writeFileSync(skinEntry, modifiedContent, "utf-8");
-
-              console.error(
-                "⚠️ skin.astro 파일에 'export const prerender = false;'를 추가했습니다.",
-              );
-            }
-          }
-
           addMiddleware({
             entrypoint: "@tistory-skin-previewer/astro/middleware",
             order: "pre",
@@ -72,22 +46,36 @@ export default function tistoryPreviewer(): AstroIntegration {
         // Vite 설정 업데이트
         updateConfig({
           vite: {
+            plugins: [
+              {
+                // 메모리 상에서 prerender = false 주입
+                name: "vite-plugin-tistory-prerender",
+                enforce: "pre",
+                transform(code, id) {
+                  // 사용자의 index.astro 파일이 로드될 때만 개입
+                  if (id.endsWith("src/pages/index.astro") && !code.includes("prerender = false")) {
+                    if (code.startsWith("---")) {
+                      // 기존 Frontmatter가 있으면 그 안에 주입
+                      return code.replace(/^---\r?\n/, "---\nexport const prerender = false;\n");
+                    } else {
+                      // Frontmatter가 아예 없으면 새로 만들어서 감싸기
+                      return `---\nexport const prerender = false;\n---\n${code}`;
+                    }
+                  }
+                  return code;
+                },
+              },
+            ],
             build: {
               rollupOptions: {
-                input: {
-                  common: "src/scripts/common.ts",
-                },
                 output: {
-                  entryFileNames: (assetInfo) => {
-                    if (assetInfo.name === "common") return "images/common.js";
-                    return "assets/[name]-[hash].js";
-                  },
+                  entryFileNames: "images/[name]-[hash].js",
                   // 3. CSS 파일을 'style.css' 단일 파일로 빌드
                   assetFileNames: (assetInfo) => {
                     if (assetInfo.name?.endsWith(".css")) {
-                      return "style.css";
+                      return "style.css"; // CSS는 루트 폴더로
                     }
-                    return "assets/[name]-[hash][extname]";
+                    return "images/[name]-[hash][extname]";
                   },
                 },
               },
@@ -105,11 +93,13 @@ export default function tistoryPreviewer(): AstroIntegration {
         const indexHtmlPath = path.join(outDir, indexFileName);
         const skinPath = path.join(outDir, "skin.html");
         try {
-          const html = await fs.readFile(indexHtmlPath, "utf-8");
+          let html = await fs.readFile(indexHtmlPath, "utf-8");
 
-          const modifiedContent = html.replace(/href="\/style\.css"/g, 'href="./style.css"');
+          html = html.replace(/href="\/style\.css"/g, 'href="./style.css"');
+          html = html.replace(/src="\/images\//g, 'src="./images/');
+          html = html.replace(/href="\/images\//g, 'href="./images/');
 
-          await fs.writeFile(skinPath, modifiedContent, "utf-8");
+          await fs.writeFile(skinPath, html, "utf-8");
           await fs.unlink(indexHtmlPath);
 
           console.log("\n");

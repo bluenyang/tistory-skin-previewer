@@ -12,6 +12,5 @@ const isProd = import.meta.env.PROD;
     <slot />
   </s_t3>
   
-  {isProd && <script src="./images/common.js" is:inline />}
-  {isPreview && <script src="/src/scripts/common.ts" />}
+  <script src="/src/scripts/common.ts"></script>
 </body>
