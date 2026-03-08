@@ -58,12 +58,6 @@ export default function tistoryPreviewer(): AstroIntegration {
             pattern: "/[...slug]",
             entrypoint: skinEntry,
           });
-
-          // 사용자가 'skin.astro'도 만들 필요 없게 하려면 아래처럼 주입
-          injectRoute({
-            pattern: "/",
-            entrypoint: skinEntry,
-          });
         } else if (command === "build") {
           // 빌드 시 "export const prerender = false;"가 있으면, 해당 라인을 제거
           if (existsSync(skinEntry)) {
