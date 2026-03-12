@@ -1,0 +1,26 @@
+---
+import Header from '@/components/common/Header.astro';
+import SList from '@/components/reps/SList.astro';
+import Article from '@/components/reps/Article.astro';
+import ArticleProtect from '@/components/reps/ArticleProtect.astro';
+import Guestbook from '@/components/reps/Guestbook.astro';
+import Paging from '@/components/common/Paging.astro';
+import Footer from '@/components/common/Footer.astro';
+import '@/styles/global.css';
+---
+<Header />
+<main>
+  <article>
+    <s_cover_group>
+      <s_cover_rep>
+        <!-- 홈 화면에 들어갈 커버 항목들을 만들어 넣어주세요. -->
+      </s_cover_rep>
+    </s_cover_group>
+    <SList />
+    <Article />
+    <ArticleProtect />
+    <Guestbook />
+    <Paging />
+  </article>
+</main>
+<Footer />

@@ -1,0 +1,19 @@
+{
+  "name": "@bluenyang/create-tistory-skin",
+  "version": "1.0.0",
+  "description": "Tistory Skin Previewer 템플릿 생성기",
+  "author": {
+    "name": "Bluenyang",
+    "email": "contact@bluenyang.kr",
+    "url": "https://github.com/bluenyang"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-tistory-skin": "./index.js"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "picocolors": "^1.0.0"
+  }
+}

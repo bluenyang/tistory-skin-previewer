@@ -1,0 +1,83 @@
+---
+---
+
+<s_article_rep>
+  <s_permalink_article_rep>
+    <!-- 글 뷰어의 모양을 만들어주세요. -->
+
+    <div id="article-footer">
+      <s_tag_label>
+        <!-- 글의 태그 부분입니다. 태그들이 들어갈 박스를 만들어주세요. -->
+        <div>
+          <h3>Tags</h3>
+          <div id="article-tag-box">[##_tag_label_rep_##]</div>
+        </div>
+      </s_tag_label>
+
+      <!-- 이전글, 현재글, 다음글을 만들어주세요. -->
+      <div>
+        <s_article_prev>
+          <!-- 이전글 -->
+          <div>
+            <a href="[##_article_prev_link_##]">
+              <h3>
+                [##_article_prev_title_##]
+              </h3>
+            </a>
+          </div>
+        </s_article_prev>
+        <div>
+          <!-- 현재글 -->
+          <div>
+            <h3>
+              [##_article_rep_title_##]
+            </h3>
+          </div>
+        </div>
+        <s_article_prev>
+          <!-- 다음글 -->
+          <div>
+            <a href="[##_article_next_link_##]">
+              <h3>
+                [##_article_next_title_##]
+              </h3>
+            </a>
+          </div>
+        </s_article_prev>
+      </div>
+
+      <s_article_related>
+        <!-- 관련글이 나오는 부분입니다. -->
+        <div title="관련글">
+          <s_article_related_rep>
+            <div>
+              <a href="[##_article_related_rep_link_##]">
+                <span>
+                  <s_article_related_rep_thumbnail>
+                    <img
+                      alt=""
+                      src="[##_article_related_rep_thumbnail_link_##]"
+                    />
+                  </s_article_related_rep_thumbnail>
+                </span>
+                <div>
+                  <h3>
+                    [##_article_next_title_##]
+                  </h3>
+                </div>
+                <span>
+                  [##_article_related_rep_date_##]
+                </span>
+              </a>
+            </div>
+          </s_article_related_rep>
+        </div>
+      </s_article_related>
+
+      <!-- 댓글 부분입니다. -->
+      <div>
+        <s_rp> [##_comment_group_##] </s_rp>
+      </div>
+    </div>
+  </s_permalink_article_rep>
+</s_article_rep>
