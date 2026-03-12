@@ -26,7 +26,6 @@ npm install @tistory-skin-previewer/astro
 yarn add @tistory-skin-previewer/astro
 # 또는
 pnpm add @tistory-skin-previewer/astro
-
 ```
 
 ---
@@ -84,7 +83,6 @@ import '@/styles/global.css'; // 글로벌 CSS
     </main>
   </TistorySkinBody>
 </html>
-
 ```
 
 ### 스크립트 작성 방식
@@ -109,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 ```bash
 npm run build
-
 ```
 
 **빌드 결과물 (`dist/`):**
@@ -121,7 +118,6 @@ dist/
  ├── style.css    (루트 경로에 위치해야 하는 메인 CSS)
  └── images/      (기타 에셋 폴더)
       └── common-xxxxxx.js (컴파일된 메인 스크립트)
-
 ```
 
 이 `dist` 폴더의 내용물을 그대로 `.zip` 으로 압축하여 티스토리에 스킨으로 등록하시면 됩니다.

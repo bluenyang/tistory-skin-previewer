@@ -26,7 +26,6 @@ npm install @tistory-skin-previewer/core
 yarn add @tistory-skin-previewer/core
 # 또는
 pnpm add @tistory-skin-previewer/core
-
 ```
 
 ---

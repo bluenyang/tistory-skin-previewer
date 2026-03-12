@@ -20,17 +20,16 @@
 
 ```bash
 # npm 사용 시
-npm create tistory-skin@latest
+npm create @bluenyang/tistory-skin@latest
 
 # npx 사용 시
-npx create-tistory-skin@latest
+npx @bluenyang/create-tistory-skin@latest
 
 # yarn 사용 시
-yarn create tistory-skin
+yarn create @bluenyang/tistory-skin
 
 # pnpm 사용 시
-pnpm create tistory-skin
-
+pnpm create @bluenyang/tistory-skin
 ```
 
 명령어를 실행하면 인터랙티브 프롬프트가 실행되며 다음 항목을 설정하게 됩니다.
@@ -44,7 +43,6 @@ pnpm create tistory-skin
 cd my-tistory-skin
 npm install
 npm run dev
-
 ```
 
 ---
@@ -65,7 +63,6 @@ my-tistory-skin/
  ├── astro.config.mjs    # 프리뷰어 Integration이 포함된 핵심 설정 파일
  ├── package.json
  └── tailwind.config.mjs # (Tailwind 선택 시 포함됨)
-
 ```
 
 ---
@@ -78,7 +75,6 @@ my-tistory-skin/
 
 ```bash
 npm run dev
-
 ```
 
 `http://localhost:4321`에 접속하여 실시간으로 스킨을 확인하며 개발하세요. `/category`, `/guestbook` 등의 티스토리 경로도 모두 자동으로 대응됩니다.
@@ -87,7 +83,6 @@ npm run dev
 
 ```bash
 npm run build
-
 ```
 
 모든 개발이 끝난 후 이 명령어를 실행하면 `dist/` 폴더에 결과물이 생성됩니다.
@@ -105,7 +100,6 @@ dist/
  ├── style.css    (컴파일된 메인 CSS)
  └── images/      (스크립트 및 기타 에셋)
       └── common-xxxxxx.js
-
 ```
 
 1. `dist` 폴더 내부의 **모든 파일과 폴더를 선택하여 하나의 `.zip` 파일로 압축**합니다.
