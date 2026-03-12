@@ -1,6 +1,6 @@
 {
   "name": "@tistory-skin-previewer/astro",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Astro integration for Tistory skin previewing",
   "author": "Bluenyang",
   "main": "./dist/index.js",
@@ -21,7 +21,8 @@
     "./components/TistorySkinBody": "./src/components/TistorySkinBody.astro"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/components"
   ],
   "scripts": {
     "build": "rollup -c",
