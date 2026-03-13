@@ -1,6 +1,6 @@
 {
   "name": "@bluenyang/create-tistory-skin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tistory Skin Previewer 템플릿 생성기",
   "license": "MIT",
   "type": "module",
