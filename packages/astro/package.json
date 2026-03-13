@@ -1,6 +1,6 @@
 {
   "name": "@tistory-skin-previewer/astro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Astro integration for Tistory skin previewing",
   "author": "Bluenyang",
   "main": "./dist/index.js",
